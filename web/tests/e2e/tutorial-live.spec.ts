@@ -1,0 +1,61 @@
+import {test,expect} from '@playwright/test';
+
+for(const width of [1440,768,390,320,820])test(`LIVE tutorial · real circuits, untouched customer and first repair at ${width}px`,async({page,request})=>{
+ test.skip(Reflect.get(globalThis,'process').env.LIVE_API!=='1','Actual stateless Qiskit training backend required.');
+ await page.setViewportSize({width,height:width>1000?1000:844});
+ await page.emulateMedia({reducedMotion:'reduce'});
+ const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ const training:{tool:string;fault:string}[]=[];
+ page.on('request',r=>{if(new URL(r.url()).pathname==='/api/training/probe')training.push(r.postDataJSON());});
+ await page.goto('/');
+ await page.screenshot({path:`tests/evidence/science-landing-${width}.png`,fullPage:true});
+ await page.locator('[data-action="start"]').click();
+ await page.getByRole('button',{name:'Learn the tools',exact:true}).click();
+ const id=await page.evaluate(()=>localStorage.getItem('ghost-in-the-cable-shift'));
+ expect(id).toBeTruthy();const path=`/api/shifts/${encodeURIComponent(id!)}`;
+ const initial=await(await request.get(path)).json();
+ expect(initial.revision).toBe(0);expect(initial.phase).toBe('choose_tool');expect(initial.reading).toBeNull();expect(initial.bell_tokens).toBe(3);
+ const bits=[['0'],['1'],['0'],['1'],['0','1','0','1'],['00','10','01','11']];
+ for(let stage=0;stage<6;stage++){
+  await expect(page.locator('[data-tutorial-stage]')).toHaveAttribute('data-tutorial-stage',String(stage));
+  await page.keyboard.press('3'); // hidden bench shortcuts must never select a tool
+  const response=page.waitForResponse(r=>new URL(r.url()).pathname==='/api/training/probe'&&r.ok());
+  await page.locator('[data-action="tutorial-run"]').click();
+  expect((await response).ok()).toBe(true);
+  await expect(page.locator('[data-training-reading]')).toHaveText(bits[stage]);
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);
+  if([0,3,5].includes(stage))await page.screenshot({path:`tests/evidence/science-stage-${stage}-${width}.png`,fullPage:true});
+  await page.evaluate(()=>scrollTo(0,0));
+  const primary=page.locator('.tutorial-actions .primary');
+  await expect(primary).toBeInViewport({ratio:1});
+  console.log(JSON.stringify({width,stage,primaryBottom:(await primary.boundingBox())?.y!+(await primary.boundingBox())?.height!}));
+  await page.locator('[data-action="tutorial-next"]').click();
+ }
+ await expect(page.locator('[data-tutorial-stage]')).toHaveAttribute('data-tutorial-stage','6');
+ await page.getByRole('switch',{name:'Flip bit',exact:true}).click();
+ await page.getByRole('switch',{name:'Flip phase',exact:true}).click();
+ await page.locator('[data-action="tutorial-apply"]').click();
+ await expect(page.locator('[data-training-preview="bit"]')).toHaveText('0');
+ await expect(page.locator('[data-training-preview="phase"]')).toHaveText('0');
+ await page.screenshot({path:`tests/evidence/science-practice-${width}.png`,fullPage:true});
+ await page.locator('[data-action="tutorial-next"]').click();
+ await expect(page.locator('.paper-ticket')).toContainText('Mara');
+ await expect(page.locator('[data-action="probe"]')).toBeDisabled();
+ expect(await(await request.get(path)).json()).toEqual(initial);
+ expect(training).toEqual([{tool:'z',fault:'I'},{tool:'z',fault:'X'},{tool:'z',fault:'Z'},{tool:'x',fault:'Z'},...['I','X','Z','Y'].map(fault=>({tool:'z',fault})),...['I','X','Z','Y'].map(fault=>({tool:'bell',fault}))]);
+ await page.screenshot({path:`tests/evidence/science-real-ticket-${width}.png`,fullPage:true});
+ await page.locator('[data-tool="z"]').click();await page.locator('[data-action="probe"]').click();
+ await expect(page.getByRole('heading',{name:'Adjust the repair.'})).toBeVisible();
+ const measured=await(await request.get(path)).json();expect(measured.revision).toBe(1);expect(measured.reading.query_count).toBe(1);
+ if(measured.reading.bits==='1')await page.getByRole('switch',{name:'Flip bit',exact:true}).click();
+ await page.locator('[data-action="diagnose"]').click();
+ await expect(page.locator('.instrument')).toHaveAttribute('data-device-state','repaired');
+ const resolved=await(await request.get(path)).json();expect(resolved.debrief.correct).toBe(true);expect(resolved.revision).toBe(2);expect(resolved.bell_tokens).toBe(3);
+ await page.screenshot({path:`tests/evidence/science-first-repair-${width}.png`,fullPage:true});
+ await page.getByRole('button',{name:'Help',exact:true}).click();await page.locator('[data-action="tutorial-replay"]').click();
+ await expect(page.locator('[data-tutorial-stage]')).toHaveAttribute('data-tutorial-stage','0');
+ await page.locator('[data-action="tutorial-skip"]').click();
+ expect(await(await request.get(path)).json()).toEqual(resolved);
+ await page.reload();await expect(page.locator('.instrument')).toHaveAttribute('data-device-state','repaired');
+ expect(errors).toEqual([]);
+});

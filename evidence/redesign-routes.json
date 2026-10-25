@@ -1,0 +1,63 @@
+{
+  "kind": "actual-loopback-http-qiskit",
+  "scope": "server-owned chapter routes; frontend redesign not yet verified",
+  "health": {
+    "status": "ok",
+    "engine": "qiskit-statevector",
+    "qiskit_version": "2.6.1"
+  },
+  "routes": [
+    {
+      "route": "story",
+      "ticket_ids": [
+        "porchlight",
+        "whisperphone",
+        "mirror-organ",
+        "skeleton-sign",
+        "fog-machine",
+        "moon-radio",
+        "midnight-projector",
+        "dawn-bell"
+      ],
+      "correct": 8,
+      "revision": 24,
+      "captured_stale_requests_rejected": 21
+    },
+    {
+      "route": "bits",
+      "ticket_ids": [
+        "porchlight",
+        "skeleton-sign",
+        "dawn-bell"
+      ],
+      "correct": 3,
+      "revision": 9,
+      "captured_stale_requests_rejected": 6
+    },
+    {
+      "route": "phase",
+      "ticket_ids": [
+        "whisperphone",
+        "moon-radio"
+      ],
+      "correct": 2,
+      "revision": 6,
+      "captured_stale_requests_rejected": 3
+    },
+    {
+      "route": "entanglement",
+      "ticket_ids": [
+        "mirror-organ",
+        "fog-machine",
+        "midnight-projector"
+      ],
+      "correct": 3,
+      "revision": 9,
+      "captured_stale_requests_rejected": 6
+    }
+  ],
+  "completed_real_repairs": 16,
+  "captured_stale_requests_rejected": 36,
+  "invalid_route_requests_rejected": true,
+  "every_mutation_read_back": true
+}

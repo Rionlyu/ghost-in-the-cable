@@ -1,0 +1,20 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {existsSync} from 'node:fs';
+import {registerHooks} from 'node:module';
+const url=new URL('../src/cinematic.ts',import.meta.url);
+const css=new URL('../src/cinematic.css',import.meta.url);
+const hooks=registerHooks({load(url,context,next){return url===css.href?{format:'module',source:'',shortCircuit:true}:next(url,context)}});
+const module=existsSync(url)?await import(url.href):{};
+hooks.deregister();
+test('the entrance is a game scene with overlaid title and immediately usable start/options, not a website hero',()=>{
+ assert.equal(typeof module.cinematicView,'function','missing cinematicView');
+ const art='<div class="forest-world"><div data-forest-camera></div></div>';
+ const html=module.cinematicView(art);
+ assert.match(html,/data-cinema/);assert.ok(html.includes(art));
+ assert.match(html,/Ghost/);assert.match(html,/Cable/);
+ for(const action of ['start','chapters','guide','menu','cinema-skip'])assert.ok(html.includes(`data-action="${action}"`),action);
+ assert.doesNotMatch(html,/hero-copy|class="intro|<header|<footer|Eight strange devices/);
+ assert.equal((html.match(/data-action="start"/g)??[]).length,1);
+ assert.equal(module.cinematicView(art),html);
+});

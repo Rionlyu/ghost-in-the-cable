@@ -1,0 +1,45 @@
+{
+  "scope": "Independent re-review of the two narrow-landscape cinematic CSS findings; not whole-app certification",
+  "passed": true,
+  "security_concerns": [],
+  "logic_errors": [],
+  "suggestions": [
+    "Separate pre-existing limitation, not a regression: at 390×844, the 30-repeat long error starts at y=-753.5 with no internal scrolling. Browser-only reconstruction of the original CSS produced identical geometry and behavior. Taller-viewport long-error containment remains a separate follow-up."
+  ],
+  "independent_measurements": {
+    "568x320": {
+      "title_action_gap_px": 72.65625,
+      "short_error_top_px": 24.5,
+      "long_error_top_px": 16,
+      "long_error_native_wheel_scroll_top_px": 832
+    },
+    "640x360": {
+      "title_action_gap_px": 106.34375,
+      "short_error_top_px": 64.5,
+      "long_error_top_px": 16,
+      "long_error_native_wheel_scroll_top_px": 792
+    },
+    "title_sizes_checked": 7,
+    "animated_skip_sizes_checked": 3,
+    "native_keyboard_retry": "Tab reveals Retry with a visible 3px focus outline; Enter triggers exactly one intercepted retry request",
+    "original_css_comparison": "Browser-only reconstruction reproduced all six original failures"
+  },
+  "reviewer_scope": {
+    "source_edits": false,
+    "installs": false,
+    "backend_restart": false,
+    "real_api_writes": false,
+    "successful_qiskit_sessions_claimed": false
+  },
+  "parent_verification": {
+    "actual_report_read_back": true,
+    "production_build": "passed",
+    "node_tests_passed": 20,
+    "browser_checks_passed": 86,
+    "browser_checks_skipped": 0,
+    "python_tests_passed": 470,
+    "ruff_and_formatting": "passed",
+    "live_entry_and_repair": "Separate parent tests use the real server and verify untouched entry state, saved resume and one-query repair"
+  },
+  "durable_evidence": "docs/CINEMATIC-VERIFICATION.md; web/tests/evidence/cinematic-*.png; web/tests/evidence/cinematic-journey.json"
+}

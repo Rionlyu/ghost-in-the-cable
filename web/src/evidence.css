@@ -1,0 +1,4 @@
+.recorded-experiment { margin-block: 2rem; padding-block: 1rem; border-block: 1px solid var(--border, #637461); }
+.experiment-chart { margin: 1.5rem 0; }
+.experiment-chart img { display: block; width: 100%; height: auto; border: 1px solid #637461; }
+.experiment-chart figcaption { margin-top: .7rem; color: #b7c2ad; font-size: .85rem; line-height: 1.6; }

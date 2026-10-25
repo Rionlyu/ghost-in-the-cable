@@ -1,0 +1,37 @@
+/* A viewport-sized title sequence. The workshop UI keeps its existing shell. */
+#app.cinematic-mode .shell{max-width:none;width:100%;height:100svh;min-height:100svh;padding:0;position:relative;isolation:isolate}
+#app.cinematic-mode .masthead,#app.cinematic-mode .footer{display:none}
+#app.cinematic-mode #main{position:relative;flex:none;width:100%;height:100svh;min-height:100svh}
+#app.cinematic-mode .global-status{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+#app.cinematic-mode .global-status.pending{clip-path:none;width:min(80%,420px);height:auto;left:50%;bottom:32px;transform:translateX(-50%);z-index:30;margin:0;text-align:center;font-size:14px;white-space:normal;background:#07120ce8;color:var(--paper);padding:8px 14px;border:0}
+.cinema{position:relative;isolation:isolate;width:100%;height:100svh;min-height:100svh;overflow:clip;background:#07100c;color:var(--paper)}
+.cinema-landscape,.cinema-vignette,.cinema-cut{position:absolute;inset:0;pointer-events:none}
+.cinema-landscape{z-index:-3}
+.cinema-vignette{z-index:-2;background:linear-gradient(180deg,#050d0c6b,transparent 35%,transparent 57%,#030a08ba),radial-gradient(ellipse at 50% 48%,transparent 30%,#02080680 100%)}
+.cinema-cut{z-index:8;background:#07100c;opacity:0}
+.cinema-title{position:absolute;top:clamp(48px,8svh,110px);left:0;right:0;text-align:center;pointer-events:none;text-shadow:0 3px 25px #020705e6;transition:opacity .55s ease}
+.cinema-title>p{font:12px/1.4 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:#d0d4c5;margin:0 0 18px}
+.cinema-title h1{font:400 clamp(58px,7vw,104px)/.88 var(--serif);letter-spacing:.08em;text-transform:uppercase}
+.cinema-title h1>span{display:block}
+.cinema-title h1>small{display:block;font:italic 400 clamp(20px,2.1vw,28px)/1.5 var(--serif);text-transform:none;letter-spacing:.06em;color:var(--paper)}
+.cinema-actions{position:absolute;bottom:max(62px,calc(8svh + env(safe-area-inset-bottom)));left:20px;right:20px;display:flex;align-items:center;flex-direction:column;gap:4px;z-index:10;transition:opacity .35s ease}
+.cinema button{color:var(--paper);font:14px/1.4 var(--sans);border:0;background:none;border-radius:0;min-height:44px}
+.cinema .cinema-start{position:relative;min-height:54px;padding:13px 38px;font-size:17px;letter-spacing:.08em;text-shadow:0 2px 8px #010604;background:#07100c45}
+.cinema-start::before,.cinema-start::after{content:'';position:absolute;top:9px;bottom:9px;width:8px;border:1px solid #d4b67c;pointer-events:none}
+.cinema-start::before{left:11px;border-right:0}.cinema-start::after{right:11px;border-left:0}
+.cinema-start:hover:not(:disabled){color:#ffe0ab;background:#09140bb3}
+.cinema kbd{font:11px/1 var(--mono);opacity:.6;margin-left:12px;letter-spacing:0}
+.cinema .cinema-chapters{font-size:13px;padding:10px 16px;color:#d0d4c5}
+.cinema .cinema-menu,.cinema .cinema-help,.cinema .cinema-skip{position:absolute;z-index:12;padding:10px 14px;font-size:13px;text-shadow:0 1px 8px #000;letter-spacing:.03em}
+.cinema-menu{top:max(14px,env(safe-area-inset-top));right:max(16px,env(safe-area-inset-right))}
+.cinema-help{bottom:max(14px,env(safe-area-inset-bottom));left:max(16px,env(safe-area-inset-left))}
+.cinema-skip{bottom:max(14px,env(safe-area-inset-bottom));right:max(16px,env(safe-area-inset-right))}
+.cinema .cinema-skip[hidden]{display:none}
+.cinema button:hover{color:#ffe0ab}.cinema button:focus-visible{outline:2px solid var(--amber);outline-offset:4px;background:#08130ed9}
+.cinema[data-cinema-state="entering"] .cinema-title,.cinema[data-cinema-state="entering"] .cinema-actions{opacity:0;pointer-events:none}
+#app.cinematic-mode #main>.error,#app.cinematic-mode #main>.storage-warning{position:absolute;z-index:30;width:min(440px,calc(100% - 40px));left:50%;transform:translateX(-50%);bottom:190px;background:#131f18f5;padding:18px;border:1px solid var(--amber);color:var(--paper)}
+#app.cinematic-mode #main>.error{max-height:calc(100svh - 220px);overflow:auto}
+#app.cinematic-mode #main>.storage-warning{top:70px;bottom:auto;font-size:13px}
+@media(max-width:640px){.cinema-title{top:max(70px,calc(11svh + env(safe-area-inset-top)))}.cinema-title h1{font-size:clamp(51px,15vw,76px)}.cinema-title>p{font-size:11px;letter-spacing:.12em;margin-bottom:16px}.cinema .cinema-start{font-size:16px;padding-inline:32px}.cinema-actions{bottom:max(78px,calc(10svh + env(safe-area-inset-bottom)))}.cinema-menu{right:max(9px,env(safe-area-inset-right))}.cinema-help{left:max(9px,env(safe-area-inset-left))}.cinema-skip{right:max(9px,env(safe-area-inset-right))}}
+@media(max-height:560px){.cinema-title{top:26px}.cinema-title>p{font-size:10px;margin-bottom:9px}.cinema-title h1{font-size:clamp(36px,11svh,56px)}.cinema-title h1>small{font-size:16px;line-height:1.25}.cinema-actions{bottom:24px;gap:0}.cinema .cinema-start{min-height:46px;font-size:15px}.cinema-chapters{font-size:12px!important}.cinema-menu{top:8px}.cinema-help,.cinema-skip{bottom:6px}#app.cinematic-mode #main>.error{bottom:106px;max-height:min(220px,calc(100svh - 142px));overflow:auto}}
+@media(prefers-reduced-motion:reduce){.cinema *,.cinema *::before,.cinema *::after{animation:none!important;transition:none!important}}

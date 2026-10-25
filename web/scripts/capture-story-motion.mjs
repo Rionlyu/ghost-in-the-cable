@@ -1,0 +1,46 @@
+import {chromium} from '@playwright/test';
+import {mkdir} from 'node:fs/promises';
+
+const base=process.env.PLAYWRIGHT_BASE_URL??'http://127.0.0.1:8000';
+const evidence=new URL('../tests/evidence/',import.meta.url);
+await mkdir(evidence,{recursive:true});
+const browser=await chromium.launch({headless:true});
+const page=await browser.newPage({viewport:{width:1440,height:1000},reducedMotion:'no-preference'});
+const errors=[];page.on('pageerror',error=>errors.push(error.message));
+const animations=()=>page.evaluate(()=>document.getAnimations().map(a=>({name:a.animationName??'web-animation',playState:a.playState,currentTime:a.currentTime,iterations:a.effect?.getTiming().iterations})));
+const finishFinite=()=>page.evaluate(()=>Promise.all(document.getAnimations().filter(a=>a.effect?.getTiming().iterations!==Infinity).map(a=>a.finished.catch(()=>{}))));
+const capture=async name=>page.screenshot({path:new URL(name,evidence).pathname,fullPage:false});
+try{
+ await page.goto(base,{waitUntil:'domcontentloaded'});
+ await page.locator('[data-forest-camera]').waitFor({state:'visible'});
+ const reveal=await animations();
+ await capture('cinematic-motion-woods-start.png');
+ await finishFinite();
+ await capture('cinematic-motion-woods-end.png');
+ await page.locator('[data-action="start"]').click();
+ await page.locator('[data-action="skip-intro"]').click();
+ await page.locator('.paper-ticket').waitFor({state:'visible'});
+ const arrival=await animations();
+ if(await page.locator('[data-ticket-stamp]').count())throw new Error('Premature repair stamp');
+ await capture('cinematic-motion-ticket-arrival.png');
+ await page.locator('[data-tool="z"]').click();
+ await page.locator('[data-action="probe"]').click();
+ await page.locator('[data-action="diagnose"]').waitFor({state:'visible'});
+ const measured=(await page.locator('.reading-bits').textContent()).trim();
+ if(measured==='1')await page.locator('[data-repair="bit"]').click();
+ const response=page.waitForResponse(r=>/\/diagnose$/.test(new URL(r.url()).pathname)&&r.ok());
+ await page.locator('[data-action="diagnose"]').click();
+ const resolved=await(await response).json();
+ if(!resolved.debrief?.correct||resolved.revision!==2)throw new Error('Real repair was not confirmed');
+ await page.locator('[data-ticket-stamp="repaired"]').waitFor({state:'visible'});
+ const stamp=await animations();
+ await page.locator('[data-ticket-stamp]').evaluate(el=>{for(const a of el.getAnimations({subtree:true})){if(['atmo-ink-land','atmo-stamper-land'].includes(a.animationName)){a.pause();a.currentTime=130;}}});
+ await capture('cinematic-motion-stamp-impact.png');
+ await page.locator('[data-ticket-stamp]').evaluate(el=>{for(const a of el.getAnimations({subtree:true}))if(a.playState==='paused')a.play();});
+ await finishFinite();
+ await capture('cinematic-motion-stamp-final.png');
+ const crt=await page.locator('.signal-screen').evaluate(el=>({scan:getComputedStyle(el,'::before').animationName,texture:getComputedStyle(el,'::after').animationName,scanOpacity:getComputedStyle(el,'::before').opacity,textureOpacity:getComputedStyle(el,'::after').opacity}));
+ const counts={reveal:reveal.filter(a=>a.name==='web-animation'&&a.iterations===1).length,arrival:arrival.filter(a=>a.name==='atmo-ticket-arrive').length,stamp:stamp.filter(a=>a.name==='atmo-ink-land').length};
+ if(!counts.reveal||!counts.arrival||!counts.stamp||errors.length)throw new Error(`Animation/runtime verification failed: ${JSON.stringify({counts,errors})}`);
+ console.log(JSON.stringify({base,viewport:{width:1440,height:1000},motion:'no-preference',nativeAnimations:counts,reveal,arrival,stamp,crt,confirmedRepair:resolved.debrief.correct,queryCount:resolved.reading.query_count,runtimeErrors:errors,evidenceDirectory:evidence.pathname},null,2));
+}finally{await browser.close();}

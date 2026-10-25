@@ -1,0 +1,27 @@
+{
+  "review_id": "deleg_21585eda",
+  "date": "2026-10-25",
+  "scope": "Full-game restart, evidence-led customer loop, secrecy/revision contracts and scientific/release claims before subsequent switch-motion restoration",
+  "passed": true,
+  "security_concerns": [],
+  "logic_errors": [],
+  "reviewer_reported_checks": {
+    "python": "470 passed",
+    "node": "26 read-only tests passed; evidence-copying test excluded",
+    "targeted_browser": "10 passed; fixtures distinguished from live checks",
+    "live_browser": "Reset/cancellation, new story resources/keeper/training, discarded training cache, ignored late training completion, unchanged prior session, fixed customer evidence, secrecy and confirmed causal feedback",
+    "quality": "TypeScript, Ruff lint/format and shell syntax passed",
+    "benchmark": "All 24 rows and 393216 outcomes reproduced, excluding timestamp",
+    "presentation": "247 spoken words"
+  },
+  "nonblocking_followup": [
+    "Parent subsequently supplied RELEASE-CHECK.md and the actual-backend workbench screenshot and checked relative links",
+    "Design documentation now distinguishes guided training previews from fixed customer evidence",
+    "Developer-specific paths are replaced by labeled scratch placeholders",
+    "Public repository readback and actual demo/submission are separate from this review"
+  ],
+  "limits": [
+    "Not a review of the subsequently restored cosmetic switch-motion addition",
+    "No publication, video, organizer acceptance, novice learning gains or accessibility certification established by this verdict"
+  ]
+}
