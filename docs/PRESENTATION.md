@@ -28,7 +28,7 @@ Screen: From Menu, choose the Entanglement chapter and explicitly confirm the ne
 
 ## 1:28–1:46
 
-> Every accepted test executes a Qiskit circuit. This is local simulation, not quantum hardware or a speedup claim. Independent benchmarks include an unentangled reference as a control, and the actual repair circuit is available after commitment.
+> Every accepted test executes a Qiskit circuit. This is local simulation, not quantum hardware or a speedup claim. Independent benchmarks include an unentangled reference as a control, and the actual test circuit is available after commitment.
 
 Screen: Apply the repair and open Inspect circuit. Show the actual Qiskit circuit briefly. A short cut to Menu → The science is optional; do not try to read a full benchmark table aloud.
 

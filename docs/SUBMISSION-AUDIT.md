@@ -1,11 +1,11 @@
 # Submission audit — Ghost in the Cable
 
-Parent release follow-up: the presentation and actual-backend workbench screenshot now exist, README relative links pass, and the rebuilt production application passes 470 Python tests, 27 Node tests and 111 browser checks. See [the current release check](RELEASE-CHECK.md), which supersedes the earlier local readiness snapshot below. An initial independent source/science review and a focused review including the subsequently restored cosmetic switch motion both passed with no blocking security or logic findings. Public GitHub readback, actual video and submission receipt are not claimed by this follow-up.
+Parent release follow-up: the presentation and actual-backend workbench screenshot now exist, README relative links pass, and the rebuilt production application passes 470 Python tests, 27 Node tests and 111 browser checks. See [the current release check](RELEASE-CHECK.md), which supersedes the earlier local readiness snapshot below. An initial independent source/science review and a focused review including the subsequently restored cosmetic switch motion both passed with no blocking security or logic findings. Public repository readback and a fresh public-clone install/test/build are now verified at https://github.com/Rionlyu/ghost-in-the-cable. The actual video and submission receipt remain outstanding.
 
 **Checked: Sunday, 25 October 2026, Warsaw (CET, UTC+01:00).**
-**Verdict: preparation draft, not a verified complete submission.** A verified public repository URL, actual demo video and submission receipt remain outstanding. An MIT licence is now present locally; eligibility and challenge-specific rules are not settled by the public pages.
+**Verdict: public source published and clean-clone checks passed; hackathon submission is not complete.** The actual demo video and submission receipt remain outstanding. The repository includes the MIT licence; eligibility and challenge-specific rules are not settled by the public pages.
 
-Scope: read-only review of the official Warsaw pages and local project evidence, followed by creation of this new document only. This audit did not edit existing project files, publish a repository, create a deployment, send a message, register an account or run a QPU job. Application tests were not rerun for this audit. Recommendations below are not additional organizer rules.
+Original audit scope (before the parent release follow-up): read-only review of the official Warsaw pages and local project evidence, followed by creation of this new document only. This audit did not edit existing project files, publish a repository, create a deployment, send a message, register an account or run a QPU job. Application tests were not rerun for this audit. Recommendations below are not additional organizer rules.
 
 ## 1. What the public sources actually establish
 

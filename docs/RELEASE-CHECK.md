@@ -48,9 +48,17 @@ The independent benchmark was regenerated; every stored key/value matched apart 
 
 Initial independent source/science review passed without blocking security or logic findings; its scope and limitations are recorded in `evidence/release-source-review.json`. The later cosmetic switch-motion change also passed independent final review, with no security/logic findings or suggestions; see `evidence/release-motion-review.json`. That reviewer ran 46 targeted browser checks and two additional restart guards; one opt-in live check was skipped in that isolated scope. The parent's separate full 111-check production run had no skips. Developer-local absolute paths were removed from publication documents and historical verification was marked superseded.
 
+## Public release verification
+
+Published source: https://github.com/Rionlyu/ghost-in-the-cable
+
+The public `main` source revision `c0b2c48dc89353e7a2dd82d3b5db45fa5538074c` was read back from GitHub and matched local HEAD. An unauthenticated GitHub API request confirmed public visibility, MIT license detection, the expected source/README/lockfiles/presentation/audit/images/evidence and an executable launcher. The 120-file upload contains no test-output/cache/environment directories. Bounded credential-pattern and added-line unsafe-code scans found no matches; that is not a guarantee of general security.
+
+A fresh public clone without a configured credential helper matched that revision. Frozen Python install, 470 Python tests, `npm ci`, 27 Node tests and the production build passed again in that clone; its worktree remained clean. Subsequent publication-record edits are documentation-only and do not change the checked game source.
+
 ## Release and submission status
 
-Independent final review, staged upload-manifest checking, public GitHub readback and a fresh public checkout are separate gates. Their results are recorded below when actually complete; passing local tests alone does not establish any of them.
+Both independent reviews, upload-manifest checks, exact public GitHub readback and the fresh public-clone install/test/build are complete. Earlier local-only snapshots in this repository are historical; they do not override this release follow-up.
 
 The repository contains the MIT licence, credits/AI-assistance disclosure, scientific scope, independent benchmark, setup, tests and a two-minute presentation script. `docs/SUBMISSION-AUDIT.md` distinguishes public organizer facts from entrant-supplied rules and unresolved questions. Exact eligibility/track/hardware/hosting/AI conditions are not inferred from the public FAQ.
 
