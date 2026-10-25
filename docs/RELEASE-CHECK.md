@@ -44,7 +44,7 @@ A fresh tree was exported from the intended Git index into an empty scratch dire
 
 The clean tree's backend was then started on loopback port 8012 to avoid disturbing the existing game on 8000. Its health check reported Qiskit 2.6.1; a real known-cable training request succeeded. An entire eight-ticket story, choosing probes from public suspect families and repairs only from measured outputs, finished with 8 correct repairs, 8 queries, revision 24 and 0 remaining link tokens. This was an API smoke test of the clean manual server invocation, not a claim that `./run.sh` took over the already occupied port 8000.
 
-The independent benchmark was regenerated; every stored key/value matched apart from `generated_at`. Source/public/build evidence copies remain provenance-bound. All README relative links resolve; the exact quoted presentation script contains 247 whitespace-counted words (about 109.8 seconds at 135 words/minute, before pauses).
+The independent benchmark was regenerated; every stored key/value matched apart from `generated_at`. Source/public/build evidence copies remain provenance-bound. All README relative links resolve.
 
 Initial independent source/science review passed without blocking security or logic findings; its scope and limitations are recorded in `evidence/release-source-review.json`. The later cosmetic switch-motion change also passed independent final review, with no security/logic findings or suggestions; see `evidence/release-motion-review.json`. That reviewer ran 46 targeted browser checks and two additional restart guards; one opt-in live check was skipped in that isolated scope. The parent's separate full 111-check production run had no skips. Developer-local absolute paths were removed from publication documents and historical verification was marked superseded.
 
@@ -60,6 +60,6 @@ A fresh public clone without a configured credential helper matched that revisio
 
 Both independent reviews, upload-manifest checks, exact public GitHub readback and the fresh public-clone install/test/build are complete. Earlier local-only snapshots in this repository are historical; they do not override this release follow-up.
 
-The repository contains the MIT licence, credits/AI-assistance disclosure, scientific scope, independent benchmark, setup, tests and a two-minute presentation script. `docs/SUBMISSION-AUDIT.md` distinguishes public organizer facts from entrant-supplied rules and unresolved questions. Exact eligibility/track/hardware/hosting/AI conditions are not inferred from the public FAQ.
+The repository contains the MIT licence, credits/AI-assistance disclosure, scientific scope, independent benchmark, setup and tests. `docs/SUBMISSION-AUDIT.md` distinguishes public organizer facts from entrant-supplied rules and unresolved questions. Exact eligibility/track/hardware/hosting/AI conditions are not inferred from the public FAQ.
 
 The actual demo video, organizer submission and receipt remain outstanding. There is no claimed hosted deployment. Real beginner comprehension, Safari, screen-reader listening, actual 200% browser zoom and human audio evaluation remain unverified.

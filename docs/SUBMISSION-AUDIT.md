@@ -1,6 +1,6 @@
 # Submission audit — Ghost in the Cable
 
-Parent release follow-up: the presentation and actual-backend workbench screenshot now exist, README relative links pass, and the rebuilt production application passes 470 Python tests, 27 Node tests and 111 browser checks. See [the current release check](RELEASE-CHECK.md), which supersedes the earlier local readiness snapshot below. An initial independent source/science review and a focused review including the subsequently restored cosmetic switch motion both passed with no blocking security or logic findings. Public repository readback and a fresh public-clone install/test/build are now verified at https://github.com/Rionlyu/ghost-in-the-cable. The actual video and submission receipt remain outstanding.
+Parent release follow-up: the actual-backend workbench screenshot now exists, README relative links pass, and the rebuilt production application passes 470 Python tests, 27 Node tests and 111 browser checks. See [the current release check](RELEASE-CHECK.md), which supersedes the earlier local readiness snapshot below. An initial independent source/science review and a focused review including the subsequently restored cosmetic switch motion both passed with no blocking security or logic findings. Public repository readback and a fresh public-clone install/test/build are now verified at https://github.com/Rionlyu/ghost-in-the-cable. The actual video and submission receipt remain outstanding.
 
 **Checked: Sunday, 25 October 2026, Warsaw (CET, UTC+01:00).**
 **Verdict: public source published and clean-clone checks passed; hackathon submission is not complete.** The actual demo video and submission receipt remain outstanding. The repository includes the MIT licence; eligibility and challenge-specific rules are not settled by the public pages.
@@ -40,7 +40,7 @@ Source for **every row below**: `docs/RULES-CHECKLIST.md`, “Confirmed in the o
 | --- | --- | --- |
 | Deadline | Sunday **25 October 2026, 16:00 UTC / 17:00 Warsaw CET**; late entries are not judged. | Treat as the working cutoff unless a later official announcement supersedes it. The UTC-to-Warsaw conversion was checked with `Europe/Warsaw`. |
 | Repository | Public repository, licence and README. | README and root MIT `LICENSE` exist at final recheck; public URL not verified. |
-| Video | Actual **1–3 minute** demo. | `docs/DEMO-SCRIPT.md` is a script, not a recording. Two minutes is our target, not an independently verified organizer presentation limit. |
+| Video | Actual **1–3 minute** demo. | An actual recording and accessible sharing link remain outstanding. |
 | Delivery | Email **submission@aiqtlab.com**, then check the event's submissions channel. | Address/channel instruction is entrant-supplied only. Nothing sent or acknowledged by this audit. |
 | Reuse | Retain licences and credit reused open-source code. | Review actual code/assets/dependencies before release; a prior-art citation alone is not a reuse audit. |
 | Blocking errors | Use the designated mentor-help channel. | Operational help route, not a substitute for submission. |
@@ -64,7 +64,7 @@ Snapshot from inspected files and local Git; it is not a promise about a later r
 
 | Deliverable | Status | Evidence / remaining work |
 | --- | --- | --- |
-| README and local run path | **PRESENT; final link/clean-checkout check pending** | `README.md` documents Python/Node/uv, `./run.sh`, manual setup, Qiskit simulation and limitations. Its proposed GitHub clone URL is not proof of publication. At 12:27 CET its `docs/PRESENTATION.md` and `docs/RELEASE-CHECK.md` targets were not yet present; create/verify or remove those links before release. |
+| README and local run path | **PRESENT; final link/clean-checkout check pending** | `README.md` documents Python/Node/uv, `./run.sh`, manual setup, Qiskit simulation and limitations. Its proposed GitHub clone URL is not proof of publication. Documentation links are checked in the current release record. |
 | Project licence | **PRESENT LOCALLY** | Root `LICENSE` contains MIT text and a 2026 entrant copyright notice; `NOTICE.md` records credits, AI assistance and dependency notices. Entrant review/approval and final actual-reuse checking remain separate from file presence. |
 | Attribution/reuse | **DOCUMENTED; final audit pending** | `docs/PRIOR-ART.md` credits established protocols and existing educational games, describes the intended game-design contribution and states an original asset ledger. Independently review actual reuse; do not claim worldwide novelty or “first quantum repair game.” |
 | Scientific conditions | **DOCUMENTED** | `docs/SCIENCE.md` specifies fault family/prior, one device use, retained reference, joint decoding, bit order, controls and limits. Keep those conditions in narration and evidence captions. |
@@ -87,24 +87,7 @@ Snapshot from inspected files and local Git; it is not a promise about a later r
 - [ ] Give judges a truthful access path: verified public deployment only if actually provided, otherwise the real local setup instructions, with hosting eligibility still unresolved.
 - [ ] Preserve the final submitted revision and actual repo/video URLs. Do not label any release, deployment or email completed until its exact target has been read back.
 
-## 4. Two-minute demo/presentation draft
-
-This is an editorial plan, **not a recording, playtest or additional official rule**. It totals 120 seconds; rehearse the actual app and trim if interactions take longer. Prefer fewer completed demonstrations to rushing every tutorial stage. See `docs/DEMO-SCRIPT.md` for operational details and recording hygiene.
-
-| Time | Show in the actual app | Narration cue |
-| --- | --- | --- |
-| 0:00–0:10 | Brief workshop entrance; skip camera travel if needed. | “Ghost in the Cable is a repair game about choosing a quantum test before spending your one chance.” |
-| 0:10–0:35 | Known resettable training cables: a bit flip, then a phase-sensitive reading. | “A Bit probe can see a bit swap but miss a phase change. The Phase probe prepares and decodes a different quantum state to make that difference readable.” |
-| 0:35–1:10 | Actual ordinary/Linked training results, reference bypass and joint decoder. | “These practice cables reset. A real job gets one use. Linked keeps one entangled partner here and sends the other through the cable. We must bring the two together to decode the fault.” |
-| 1:10–1:35 | One real ticket: probe once, set repair switches from the returned result, apply and show the real confirmation. | “The reading stays fixed while I choose the correction. The repair is checked when I apply it.” Do not assume the hidden fault or force a scripted success. |
-| 1:35–1:50 | Actual circuit and stored independent evidence. | “These are Qiskit simulations, not quantum hardware. For four equally likely Pauli faults, one use and ideal operations, the ordinary/control benchmark is 50%; entangled assistance is 100%.” |
-| 1:50–2:00 | Return to the workshop; show only finalized real repo/video/access information. | “The contribution is the repair loop, teaching sequence and resource choices—not a new quantum protocol or computational speedup.” |
-
-Scientific guardrails from `docs/SCIENCE.md` and `docs/PRIOR-ART.md`: the two-suspect first ticket is not the four-way benchmark; the reference alone does not reveal a remote fault; the Bell 50/50 marginals are pre-decoder, not final decoded bits. Noise results are synthetic sensitivity experiments, not calibrated hardware. Never invent novice quotations, measured learning gains or a completed campaign receipt.
-
-Recording checks: use real returned results; keep the simulation disclosure visible; avoid developer network panels, session identifiers and unrelated desktop material. Measure the actual exported duration against the entrant-supplied 1–3 minute window and test the sharing link without the creator's login. Do not publish the video without authorization.
-
-## 5. Minimal submission email — NOT SENT
+## 4. Minimal submission email — NOT SENT
 
 Use only after the human entrant supplies the actual registered identity/team, checks available current rules, verifies real links and authorizes sending. Recipient below is from the entrant-supplied announcement, **not independently public-confirmed**. Subject/body layout is proposed, not organizer-mandated. Replace every bracketed placeholder; omit an optional hosted-play line if there is no deployment.
 
@@ -137,11 +120,11 @@ Thank you,
 
 After an authorized send, verify the sent message's recipient, timestamp and actual links, then follow the supplied submissions-channel instruction. A sent message is evidence of sending, not proof of organizer acceptance. If anything is inaccessible or unresolved, report that plainly rather than claiming a completed submission.
 
-## 6. Source scope and limitations
+## 5. Source scope and limitations
 
 All external sources below were checked on **25 October 2026**. The programme, Luma, prerequisites and conduct text were retrieved directly from their live public URLs; the Discord check used the public browser invite only. Search results from other cities were not used as Warsaw rules. The configured text-extraction backend could not extract pages; direct retrieval provided the page text instead. No Discord login or server-channel access was attempted.
 
-Local evidence inspected on the same date: `README.md`, `.gitignore`, `pyproject.toml`, `LICENSE`, `NOTICE.md`, `docs/RULES-CHECKLIST.md`, `docs/PRIOR-ART.md`, `docs/SCIENCE.md`, `docs/VERIFICATION.md`, `docs/CINEMATIC-VERIFICATION.md`, `docs/STATUS-LAYOUT-FIX.md`, `docs/DEMO-SCRIPT.md`, `docs/PLAYTEST.md`, and the stored `evidence/benchmark.json`. Local Git observations establish only this checkout's state. This document is not a full dependency, security, legal or science-reproduction audit.
+Local evidence inspected on the same date: `README.md`, `.gitignore`, `pyproject.toml`, `LICENSE`, `NOTICE.md`, `docs/RULES-CHECKLIST.md`, `docs/PRIOR-ART.md`, `docs/SCIENCE.md`, `docs/VERIFICATION.md`, `docs/CINEMATIC-VERIFICATION.md`, `docs/STATUS-LAYOUT-FIX.md`, `docs/PLAYTEST.md`, and the stored `evidence/benchmark.json`. Local Git observations establish only this checkout's state. This document is not a full dependency, security, legal or science-reproduction audit.
 
 ## Sources
 

@@ -123,7 +123,7 @@ Tests cover actual circuits, hidden-fault boundaries, single-query and token enf
 | `benchmarks/` | Independent circuits and reproducible sampling |
 | `tests/` | Physics, API, replay and benchmark tests |
 | `evidence/` | Recorded benchmark and scoped review artifacts |
-| `docs/` | Scientific explanation, playtesting, presentation and release notes |
+| `docs/` | Scientific explanation, playtesting and release notes |
 
 ## Limits and credits
 
@@ -134,4 +134,4 @@ Tests cover actual circuits, hidden-fault boundaries, single-query and token enf
 - Developed by **Beniamin Kmieć**, with AI assistance through **Hermes Agent** for implementation, research, tests and original assets. No third-party game art, music or fonts are bundled. [Credits](NOTICE.md)
 - Licensed under **MIT**; dependencies retain their own licenses. This project is not an official IBM product.
 
-**For the presentation:** [two-minute script and screen cues](docs/PRESENTATION.md). **For the entrant:** [submission audit](docs/SUBMISSION-AUDIT.md). A published repository is not itself an accepted hackathon submission.
+**For the entrant:** [submission audit](docs/SUBMISSION-AUDIT.md). A published repository is not itself an accepted hackathon submission.
